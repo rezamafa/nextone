@@ -1,8 +1,7 @@
+import Image from "next/image";
 import { getSession } from "nextapp/utils/auth";
 
 export default async function Navbar() {
-  const session = await getSession();
-
   return(
     <nav className="navbar flex m-4 rounded-lg bg-slate-800">
       <NavbarLogo />
@@ -10,13 +9,8 @@ export default async function Navbar() {
         <NavbarItem link="/">Home</NavbarItem>
         <NavbarItem link="/products">Producs</NavbarItem>
         <NavbarItem link="/card">Shoping Card</NavbarItem>
-        <NavbarItem link="/profile">Profile</NavbarItem>
         <NavbarItem link="/blog">Blog</NavbarItem>
-        {session ? 
-          <NavbarItem link="/api/auth/signin">Signed In as {session.user?.name}</NavbarItem> : 
-          <NavbarItem link="/api/auth/signin">Sign In</NavbarItem>
-        }
-        {session ? <NavbarItem link="/api/auth/signout">Sign Out</NavbarItem> : ""}
+        <NavbarAccountInfo />
       </ul>
     </nav>
   )
@@ -32,8 +26,23 @@ function NavbarItem({ children, link }:{ children: React.ReactNode, link: string
 
 function NavbarLogo(){
   return (
-    <a href="/" className="p-3 px-8 font-extrabold text-2xl text-emerald-200">
-      <span>NextOne Shop</span>
+    <a href="/" className="p-3 px-8 font-extrabold text-2xl text-emerald-400 hover:text-emerald-200">
+      <span>Next / One</span>
     </a>
+  )
+}
+async function NavbarAccountInfo() {
+  const session = await getSession();
+  return (
+    <>
+    {session ? 
+      <>
+        <Image className="rounded-full" width={48} height={48} alt="A" src={session.user?.image || "next.svg"} />
+        <NavbarItem link="/api/auth/signin">Signed In as {session.user?.email}</NavbarItem>
+        <NavbarItem link="/api/auth/signout">Sign Out</NavbarItem>
+      </> : 
+      <NavbarItem link="/api/auth/signin">Sign In</NavbarItem>
+    }
+    </>
   )
 }
