@@ -37,8 +37,8 @@ async function NavbarAccountInfo() {
     <>
     {session ? 
       <>
-        <Image className="rounded-full" width={48} height={48} alt="A" src={session.user?.image || "next.svg"} />
-        <NavbarItem link="/api/auth/signin">Signed In as {session.user?.email}</NavbarItem>
+        <Image className="rounded-full" width={40} height={40} alt="A" src={session.user?.image || "next.svg"} />
+        <NavbarItem link="/api/auth/signin">Signed in as {session.user?.email}</NavbarItem>
         <NavbarItem link="/api/auth/signout">Sign Out</NavbarItem>
       </> : 
       <NavbarItem link="/api/auth/signin">Sign In</NavbarItem>

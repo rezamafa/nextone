@@ -15,6 +15,8 @@ NEXTAUTH_URL="YOUR_WEBSITE_URL"
 NEXTAUTH_SECRET="YOUR_RANDOM_SECRET_KEY"
 GITHUB_ID="YOUR_GITHUB_ID"
 GITHUB_SECRET="YOUR_GITHUB_SECRET_KEY"
+GOOGLE_ID="YOUR_GOOGLE_ID"
+GOOGLE_SECRET="YOUR_GOOGLE_SECRET_KEY"
 ```
 ## Other
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
