@@ -1,5 +1,25 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Prepare MongoDB
+1. Install docker.
+2. Get Mongodb Image: 
+```bash
+sudo docker pull mongo
+```
+3. Run docker compose .yml file:
+```bash
+sudo docker compose up -d
+```
+4. or start a mogodb container without docker compose:
+```bash
+sudo docker run -d --name YourDBName \
+-e MONGO_INITDB_ROOT_USERNAME=yourdbrootusername \
+-e MONGO_INITDB_ROOT_PASSWORD=yourdbrootpassword \
+-p 27017:27017 \
+-v yourmongovolume:/data/db \
+mongo
+```
+
 ## Getting Started
 First, run the development server:
 ```bash
